@@ -1,20 +1,26 @@
 // 1-Написать функцию, преобразующую число в объект. Передавая на вход число от 0 до 999, надо получить на выходе объект, в котором в соответствующих свойствах описаны единицы, десятки и сотни. Например, для числа 245 надо получить следующий объект: {‘единицы’: 5, ‘десятки’: 4, ‘сотни’: 2}. Если число превышает 999, необходимо выдать соответствующее сообщение с помощью console.log и вернуть пустой объект.
 
 function splitNumber(num) {
-  if (num > 999) {
-    return `${num} - слишком большое число`;
-  }
-  let unit = ["units", "tens", "hundreds"];
+  const minNum = 0;
+  const maxNum = 999;
+  let unit = ["units", "tens", "hundreds", "thousands"];
   let splitNumberObj = {};
   let i = 0;
+  if (num < minNum && num > maxNum) {
+    return `${num} - число вне диапазона`;
+  } else if (num === 0) {
+    splitNumberObj[unit[i]] = num;
+    return splitNumberObj;
+  }
+
   while (num > 0) {
-    splitNumberObj[unit[i]] = Math.floor(num % 10);
+    splitNumberObj[unit[i]] = num % 10;
     i++;
-    num = num / 10;
+    num = Math.trunc(num / 10);
   }
   return splitNumberObj;
 }
-console.log(splitNumber(745));
+console.log(splitNumber(0));
 
 // 2-Продолжить работу с интернет-магазином:
 // В прошлом домашнем задании вы реализовали корзину на базе массивов. Какими объектами можно заменить их элементы?
