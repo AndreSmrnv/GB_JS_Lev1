@@ -27,4 +27,20 @@ console.log(splitNumber(0));
 // Реализуйте такие объекты.
 // Перенести функционал подсчета корзины на объектно-ориентированную базу.
 
+let cartItems = [];
+cartItems.push({ id: 125, name: "яблоко", price: 45, quantity: 3 });
+cartItems.push({ id: 129, name: "груша", price: 11, quantity: 1 });
+cartItems.push({ id: 159, name: "мандарин", price: 18, quantity: 14 });
+cartItems.push({ id: 159, name: "ананас", price: 1100, quantity: 1 });
+// b) Организовать функцию countBasketPrice, которая будет считать стоимость корзины.
+
+function countBasketPrice(arrayProd) {
+  let sumBasketPrice = 0;
+  for (item of arrayProd) {
+    sumBasketPrice += item.price * item.quantity;
+  }
+  return sumBasketPrice;
+}
+console.log(countBasketPrice(cartItems));
+
 // 3-* Подумать над глобальными сущностями. К примеру, сущность «Продукт» в интернет-магазине актуальна не только для корзины, но и для каталога. Стремиться нужно к тому, чтобы объект «Продукт» имел единую структуру для различных модулей сайта, но в разных местах давал возможность вызывать разные методы.
